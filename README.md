@@ -26,7 +26,7 @@ Add this to your module's `build.gradle` file (make sure the version matches the
 ```gradle
 dependencies {
 	...
-	implementation 'com.github.mahdimoqadasi:ThumbIndicator:1.0.0'
+	implementation 'com.github.mahdimoqadasi:ThumbIndicator:1.1.1'
 }
 ```
 # Walkthrough
@@ -83,7 +83,7 @@ This is an indicator to bind with `ViewPager`.
 
 This project use this libraries ~ Thanks to them.
 
-  [Glide](https://github.com/bumptech/glide) ver 4.0.0
+  [Glide](https://github.com/bumptech/glide) ver 4.8.0
 
 ## Contributing
 
