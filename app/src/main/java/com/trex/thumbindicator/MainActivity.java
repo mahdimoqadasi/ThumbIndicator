@@ -1,4 +1,4 @@
-package com.trex.customviewpager;
+package com.trex.thumbindicator;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

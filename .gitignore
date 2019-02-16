@@ -33,3 +33,6 @@ captures/
 
 # Android Studio idea files
 .idea/
+
+# Android Studio generated files
+*.iml
