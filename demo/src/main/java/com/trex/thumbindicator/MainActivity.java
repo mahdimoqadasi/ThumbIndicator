@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.trex.lib.ThumbIndicator;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    List<Integer> mImgs;
+    List<String> mUrls;
     ViewPager mVpMain;
     ThumbIndicator mIndicator;
 
@@ -31,23 +32,24 @@ public class MainActivity extends AppCompatActivity {
     private void def() {
         mVpMain = findViewById(R.id.vpMain);
         mIndicator = findViewById(R.id.indicator);
-        mImgs = getMockImgs();
+        mUrls = getMockImgs();
     }
 
-    private List<Integer> getMockImgs() {
-        List<Integer> tmp = new ArrayList<>();
-        tmp.add(R.drawable.a);
-        tmp.add(R.drawable.b);
-        tmp.add(R.drawable.c);
-        tmp.add(R.drawable.d);
-        tmp.add(R.drawable.e);
+    private List<String> getMockImgs() {
+        List<String> tmp = new ArrayList<>();
+        tmp.add("http://api.moneyar.com/APIs/images/23599258923.jpg");
+        tmp.add("http://api.moneyar.com/APIs/images/23599524312.jpg");
+        tmp.add("http://api.moneyar.com/APIs/images/23599660421.jpg");
+        tmp.add("http://api.moneyar.com/APIs/images/23599697411.jpg");
+        tmp.add("http://api.moneyar.com/APIs/images/23599792108.jpg");
+        tmp.add("http://api.moneyar.com/APIs/images/23599993964.jpg");
         return tmp;
     }
 
     private void setup() {
         VpAdapter adp = new VpAdapter();
         mVpMain.setAdapter(adp);
-        mIndicator.setupWithViewPager(mVpMain, mImgs, 70);
+        mIndicator.setupWithViewPager(mVpMain, (ArrayList<String>) mUrls, 70);
     }
 
     class VpAdapter extends PagerAdapter {
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         public Object instantiateItem(@NonNull ViewGroup container, final int position) {
             View v = getLayoutInflater().inflate(R.layout.thumb_item, container, false);
             ImageView imgSlider = v.findViewById(R.id.imgSlider);
-            imgSlider.setImageResource(mImgs.get(position));
+            Glide.with(container.getContext()).load(mUrls.get(position)).into(imgSlider);
             container.addView(v);
             return v;
         }
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return mImgs.size();
+            return mUrls.size();
         }
     }
 }
