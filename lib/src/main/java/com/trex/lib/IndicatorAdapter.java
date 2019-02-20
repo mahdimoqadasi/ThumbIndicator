@@ -60,4 +60,19 @@ class IndicatorAdapter extends PagerAdapter {
     public int getCount() {
         return mUrls != null ? mUrls.size() : mResources.size();
     }
+
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        if (mUrls != null) {
+            if (mUrls.indexOf(object) == -1)
+                return POSITION_NONE;
+            else
+                return super.getItemPosition(object);
+        } else {
+            if (mResources.indexOf(object) == -1)
+                return POSITION_NONE;
+            else
+                return super.getItemPosition(object);
+        }
+    }
 }

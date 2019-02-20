@@ -13,6 +13,7 @@ import java.util.List;
 public class ThumbIndicator extends ViewPager {
     private ArrayList<String> mUrls;
     private List<Integer> mResources;
+    IndicatorAdapter mAdp;
 
     public ThumbIndicator(@NonNull Context context) {
         super(context);
@@ -40,7 +41,6 @@ public class ThumbIndicator extends ViewPager {
                 setCurrentItem(pos);
             }
         };
-        IndicatorAdapter mAdp;
         if (mUrls != null)
             mAdp = new IndicatorAdapter(mUrls, callBack);
         else
@@ -54,7 +54,11 @@ public class ThumbIndicator extends ViewPager {
 
             @Override
             public void onPageSelected(int i) {
-                setCurrentItem(i);
+                if (mUrls != null && mUrls.size() > 1) {
+                    setCurrentItem(i);
+                } else if (mResources != null && mResources.size() > 1) {
+                    setCurrentItem(i);
+                }
             }
 
             @Override
@@ -68,7 +72,8 @@ public class ThumbIndicator extends ViewPager {
 
             @Override
             public void onPageSelected(int i) {
-                vp.setCurrentItem(i);
+                if (mUrls.size() > 1)
+                    vp.setCurrentItem(i);
             }
 
             @Override
@@ -78,6 +83,10 @@ public class ThumbIndicator extends ViewPager {
         setClipToPadding(false);
         int padding = (getResources().getDisplayMetrics().widthPixels / 2) - (dpToPixel(size) / 2);
         setPadding(padding, 0, padding, 0);
+    }
+
+    public void notifyDataSetChanged() {
+        mAdp.notifyDataSetChanged();
     }
 
     private int dpToPixel(float dp) {
