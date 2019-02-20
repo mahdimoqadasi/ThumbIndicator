@@ -64,11 +64,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageScrollStateChanged(int i) {
                 if (indexToDelete != -1 && i == ViewPager.SCROLL_STATE_IDLE) {
-                    boolean isLast = ((mVpMain.getCurrentItem() + 1) == indexToDelete) || mUrls.size() < 3;
                     mUrls.remove(indexToDelete);
                     adp.notifyDataSetChanged();
                     mIndicator.notifyDataSetChanged();
-                    if (!isLast) {
+                    if (indexToDelete == 0) {
                         mVpMain.setCurrentItem(indexToDelete, false);
                         mIndicator.setCurrentItem(indexToDelete, false);
                     }
