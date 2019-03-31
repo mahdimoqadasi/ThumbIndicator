@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![](https://jitpack.io/v/Shashank02051997/FancyWalkthrough-Android.svg)](https://jitpack.io/#Shashank02051997/FancyWalkthrough-Android)
 
-This is a Thumbnail Indicator for android that binds with viewPager with ease.
+This is a Thumbnail Indicator (Image Indicator) for android that binds with viewPager with ease.
 
 ## Prerequisites
 
